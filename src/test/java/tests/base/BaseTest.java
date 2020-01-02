@@ -17,8 +17,8 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import junit.framework.Assert;
-import pfPack.util.Constants;
 import pfPack.util.ExtentManager;
 
 public class BaseTest {
@@ -33,15 +33,18 @@ public class BaseTest {
 	
 	public void openBrowser(String browserType) {
 		if(browserType.equalsIgnoreCase("firefox")) {
-			System.setProperty("webdriver.gecko.driver", Constants.FIREFOX_DRIVER);
+			//System.setProperty("webdriver.gecko.driver", Constants.FIREFOX_DRIVER);
+			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			
 			
 		}else if(browserType.equalsIgnoreCase("chrome")){
-			System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER);
+			//System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER);
+			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 		}else if(browserType.equalsIgnoreCase("ie")){
-			System.setProperty("webdriver.ie.driver", Constants.IE_DRIVER);
+			//System.setProperty("webdriver.ie.driver", Constants.IE_DRIVER);
+			WebDriverManager.iedriver().setup();
 			driver = new InternetExplorerDriver();
 			
 		}
